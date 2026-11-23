@@ -1,1785 +1,1844 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#173c2b">
-    <meta name="description" content="Discover premium, carefully processed SULYMAS FARM RICE. Order family and wholesale rice packs across Nigeria.">
-    <title>SULYMAS FARM RICE | Premium Quality Rice</title>
-
-    <!-- External fonts and icons -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-    <style>
-        :root {
-            --green: #214b35;
-            --green-dark: #143522;
-            --gold: #c9a45c;
-            --gold-light: #e4ca8e;
-            --cream: #f7f5ef;
-            --ink: #292d29;
-            --muted: #656a64;
-            --ease: cubic-bezier(.22, 1, .36, 1);
-            --section-pad: 92px 8%;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 90px;
-        }
-
-        body {
-            background: var(--cream);
-            color: var(--ink);
-            font-family: "DM Sans", sans-serif;
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-
-        body, button, input, textarea {
-            font-family: "DM Sans", sans-serif;
-        }
-
-        img {
-            display: block;
-            width: 100%;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        button, a {
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        button:focus-visible,
-        a:focus-visible,
-        input:focus-visible,
-        textarea:focus-visible {
-            outline: 3px solid var(--gold);
-            outline-offset: 4px;
-        }
-
-        section {
-            padding: var(--section-pad);
-            position: relative;
-            overflow: hidden;
-        }
-
-        h1, h2, h3, h4 {
-            font-family: "Playfair Display", serif;
-            line-height: 1.2;
-        }
-
-        .title {
-            color: var(--green);
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            font-weight: 600;
-            letter-spacing: -.025em;
-            margin-bottom: 52px;
-            position: relative;
-            text-align: center;
-        }
-
-        .title::after {
-            background: var(--gold);
-            border-radius: 99px;
-            content: "";
-            display: block;
-            height: 2px;
-            margin: 18px auto 0;
-            transition: width .6s var(--ease);
-            width: 72px;
-        }
-
-        .title:hover::after {
-            width: 120px;
-        }
-
-        /* Header */
-        header {
-            align-items: center;
-            backdrop-filter: blur(16px);
-            background: rgba(250, 249, 245, .94);
-            border-bottom: 1px solid rgba(33, 75, 53, .09);
-            box-shadow: 0 5px 25px rgba(0, 0, 0, .04);
-            display: flex;
-            justify-content: space-between;
-            left: 0;
-            padding: 18px 8%;
-            position: fixed;
-            right: 0;
-            top: 0;
-            transition: padding .4s var(--ease), box-shadow .4s ease;
-            z-index: 1000;
-        }
-
-        header.scrolled {
-            box-shadow: 0 8px 30px rgba(0, 0, 0, .1);
-            padding-bottom: 12px;
-            padding-top: 12px;
-        }
-
-        .logo {
-            align-items: center;
-            display: flex;
-            gap: 11px;
-            min-width: max-content;
-        }
-
-        .logo i {
-            color: var(--gold);
-            font-size: 28px;
-        }
-
-        .logo h2 {
-            color: var(--green);
-            font-size: 1.12rem;
-            letter-spacing: .06em;
-        }
-
-        nav ul {
-            align-items: center;
-            display: flex;
-            gap: clamp(14px, 2vw, 30px);
-        }
-
-        nav a {
-            color: #333a34;
-            font-size: .9rem;
-            font-weight: 600;
-            position: relative;
-            transition: color .3s ease;
-        }
-
-        nav a::after {
-            background: var(--gold);
-            bottom: -8px;
-            content: "";
-            height: 1px;
-            left: 0;
-            position: absolute;
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform .4s var(--ease);
-            width: 100%;
-        }
-
-        nav a:hover,
-        nav a.active {
-            color: var(--green);
-        }
-
-        nav a:hover::after,
-        nav a.active::after {
-            transform: scaleX(1);
-            transform-origin: left;
-        }
-
-        .menu-btn {
-            background: none;
-            border: 0;
-            color: var(--green);
-            cursor: pointer;
-            display: none;
-            font-size: 1.5rem;
-        }
-
-        /* Hero */
-        .hero {
-            align-items: center;
-            background:
-                linear-gradient(90deg, rgba(10, 23, 15, .78), rgba(10, 23, 15, .36)),
-                url("images/hero.jpg") center/cover no-repeat;
-            color: #fff;
-            display: flex;
-            min-height: 100vh;
-            padding: 130px 8% 85px;
-        }
-
-        .hero::before,
-        .hero::after {
-            content: "";
-            inset: 0;
-            pointer-events: none;
-            position: absolute;
-        }
-
-        .hero::before {
-            animation: heroGlow 12s ease-in-out infinite alternate;
-            background:
-                radial-gradient(circle at 75% 28%, rgba(201, 164, 92, .2), transparent 28%),
-                radial-gradient(circle at 15% 85%, rgba(255, 255, 255, .08), transparent 25%);
-        }
-
-        .hero::after {
-            background: linear-gradient(90deg, transparent 55%, rgba(201, 164, 92, .08));
-            mix-blend-mode: screen;
-        }
-
-        .hero-content {
-            align-items: center;
-            display: grid;
-            gap: 50px;
-            grid-template-columns: 1.1fr .9fr;
-            margin: 0 auto;
-            max-width: 1320px;
-            position: relative;
-            width: 100%;
-            z-index: 1;
-        }
-
-        .hero-text {
-            animation: riseIn 1s var(--ease) both;
-            max-width: 680px;
-        }
-
-        .eyebrow {
-            color: var(--gold-light);
-            display: inline-block;
-            font-size: .78rem;
-            font-weight: 700;
-            letter-spacing: .22em;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
-        .hero-text h1 {
-            animation: riseIn 1s .12s var(--ease) both;
-            font-size: clamp(3rem, 6vw, 5.3rem);
-            font-weight: 500;
-            letter-spacing: -.045em;
-            line-height: 1.04;
-            margin-bottom: 25px;
-            text-wrap: balance;
-        }
-
-        .hero-text p {
-            animation: riseIn 1s .25s var(--ease) both;
-            color: rgba(255, 255, 255, .86);
-            font-size: 1.06rem;
-            line-height: 1.9;
-            margin-bottom: 34px;
-            max-width: 560px;
-        }
-
-        .btn {
-            animation: riseIn 1s .38s var(--ease) both;
-            background: linear-gradient(110deg, #b99550, #e1c47e, #b99550);
-            background-size: 200% 100%;
-            border-radius: 99px;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, .18);
-            color: #17251b;
-            display: inline-flex;
-            font-weight: 700;
-            gap: 12px;
-            padding: 15px 29px;
-            transition: background-position .6s ease, transform .4s var(--ease), box-shadow .4s ease;
-        }
-
-        .btn:hover {
-            background-position: 100% 0;
-            box-shadow: 0 18px 38px rgba(0, 0, 0, .23);
-            transform: translateY(-4px);
-        }
-
-        .phone-preview {
-            animation: floatPhone 7s ease-in-out infinite;
-            display: flex;
-            justify-content: center;
-        }
-
-        .phone-frame {
-            background: #17231b;
-            border: 12px solid rgba(255, 255, 255, .12);
-            border-radius: 52px;
-            box-shadow: 0 35px 90px rgba(0, 0, 0, .45);
-            height: 590px;
-            max-width: 100%;
-            overflow: hidden;
-            padding: 14px;
-            position: relative;
-            width: 300px;
-        }
-
-        .phone-top {
-            background: rgba(255, 255, 255, .2);
-            border-radius: 99px;
-            height: 7px;
-            margin: 0 auto 15px;
-            width: 72px;
-        }
-
-        .phone-screen {
-            background: #11291b;
-            border-radius: 34px;
-            height: calc(100% - 22px);
-            overflow: hidden;
-            position: relative;
-        }
-
-        .phone-slide {
-            display: flex;
-            flex-direction: column;
-            inset: 0;
-            justify-content: space-between;
-            opacity: 0;
-            padding: 20px;
-            position: absolute;
-            transform: scale(1.025);
-            transition: opacity .8s ease, transform 1.1s var(--ease);
-        }
-
-        .phone-slide.active {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .phone-slide img {
-            border-radius: 19px;
-            box-shadow: 0 14px 28px rgba(0, 0, 0, .25);
-            height: 205px;
-            object-fit: cover;
-        }
-
-        .slide-badge {
-            align-self: flex-start;
-            background: rgba(201, 164, 92, .16);
-            border: 1px solid rgba(201, 164, 92, .35);
-            border-radius: 99px;
-            color: var(--gold-light);
-            font-size: .75rem;
-            letter-spacing: .08em;
-            padding: 7px 12px;
-            text-transform: uppercase;
-        }
-
-        .phone-slide h4 {
-            color: #fff;
-            font-size: 1.35rem;
-            margin: 15px 0 7px;
-        }
-
-        .phone-slide p,
-        .slide-note {
-            color: rgba(255, 255, 255, .8);
-            font-size: .88rem;
-        }
-
-        .slide-note {
-            color: var(--gold-light);
-            margin-top: 12px;
-        }
-
-        /* About */
-        .about,
-        .products,
-        .testimonials,
-        .gallery,
-        .contact {
-            background: linear-gradient(135deg, #f8f7f2, #fff);
-        }
-
-        .about::before,
-        .products::before,
-        .gallery::before,
-        .contact::before {
-            background: radial-gradient(circle, rgba(33, 75, 53, .08), transparent 70%);
-            border-radius: 50%;
-            content: "";
-            height: 480px;
-            pointer-events: none;
-            position: absolute;
-            right: -180px;
-            top: -220px;
-            width: 480px;
-        }
-
-        .about-container {
-            align-items: center;
-            display: grid;
-            gap: 65px;
-            grid-template-columns: 1fr 1fr;
-            position: relative;
-            z-index: 1;
-        }
-
-        .image-wrapper {
-            border-radius: 20px;
-            box-shadow: 0 28px 75px rgba(33, 75, 53, .16);
-            overflow: hidden;
-            position: relative;
-        }
-
-        .image-wrapper img {
-            min-height: 400px;
-            object-fit: cover;
-            transition: transform 1s var(--ease);
-        }
-
-        .image-wrapper:hover img {
-            transform: scale(1.045);
-        }
-
-        .image-badge {
-            background: linear-gradient(120deg, #b99550, #dfc27e);
-            border-radius: 99px;
-            box-shadow: 0 10px 28px rgba(0, 0, 0, .18);
-            color: #17251b;
-            font-size: .85rem;
-            font-weight: 700;
-            padding: 11px 18px;
-            position: absolute;
-            right: 20px;
-            top: 20px;
-        }
-
-        .about-text h3 {
-            color: var(--green);
-            font-size: clamp(1.9rem, 3vw, 2.6rem);
-            margin-bottom: 20px;
-        }
-
-        .about-text > p {
-            color: var(--muted);
-            margin-bottom: 17px;
-        }
-
-        .features-grid {
-            border-bottom: 1px solid rgba(33, 75, 53, .12);
-            border-top: 1px solid rgba(33, 75, 53, .12);
-            display: grid;
-            gap: 14px;
-            grid-template-columns: repeat(2, 1fr);
-            margin: 28px 0;
-            padding: 25px 0;
-        }
-
-        .feature-item {
-            background: rgba(33, 75, 53, .035);
-            border-radius: 14px;
-            padding: 18px 12px;
-            text-align: center;
-            transition: transform .4s var(--ease), background .4s ease;
-        }
-
-        .feature-item:hover {
-            background: rgba(33, 75, 53, .08);
-            transform: translateY(-5px);
-        }
-
-        .feature-item i {
-            color: var(--gold);
-            font-size: 1.7rem;
-            margin-bottom: 8px;
-        }
-
-        .feature-item h4 {
-            color: var(--green);
-            font-family: "DM Sans", sans-serif;
-            font-size: .98rem;
-            margin-bottom: 3px;
-        }
-
-        .feature-item p {
-            color: var(--muted);
-            font-size: .84rem;
-        }
-
-        .benefits-title {
-            color: var(--green);
-            font-family: "DM Sans", sans-serif;
-            font-size: 1.1rem;
-            margin: 22px 0 12px;
-        }
-
-        .benefits-list {
-            display: grid;
-            gap: 9px;
-        }
-
-        .benefits-list li {
-            align-items: center;
-            background: rgba(33, 75, 53, .045);
-            border-radius: 9px;
-            color: #424a43;
-            display: flex;
-            font-size: .91rem;
-            gap: 11px;
-            padding: 10px 13px;
-            transition: background .3s ease, transform .3s ease;
-        }
-
-        .benefits-list li:hover {
-            background: rgba(33, 75, 53, .1);
-            transform: translateX(5px);
-        }
-
-        .benefits-list i {
-            color: var(--gold);
-        }
-
-        /* Dark green sections */
-        .certifications,
-        .why,
-        .hours {
-            background:
-                radial-gradient(circle at 90% 10%, rgba(201, 164, 92, .12), transparent 27%),
-                linear-gradient(135deg, #214b35, #143522);
-            color: #fff;
-        }
-
-        .certifications::before,
-        .why::before,
-        .hours::before {
-            background: radial-gradient(circle, rgba(255, 255, 255, .07), transparent 70%);
-            border-radius: 50%;
-            content: "";
-            height: 500px;
-            left: -180px;
-            pointer-events: none;
-            position: absolute;
-            top: 35%;
-            width: 500px;
-        }
-
-        .certifications .title,
-        .why .title,
-        .hours .title {
-            color: var(--gold-light);
-        }
-
-        .certifications .title::after,
-        .why .title::after {
-            background: var(--gold-light);
-        }
-
-        .cert-container,
-        .why-container {
-            display: grid;
-            gap: 24px;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-            position: relative;
-            z-index: 1;
-        }
-
-        .cert-card,
-        .box {
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, .075);
-            border: 1px solid rgba(255, 255, 255, .16);
-            border-radius: 18px;
-            padding: 32px 24px;
-            text-align: center;
-            transition: transform .5s var(--ease), background .4s ease, border-color .4s ease, box-shadow .4s ease;
-        }
-
-        .cert-card:hover,
-        .box:hover {
-            background: rgba(255, 255, 255, .13);
-            border-color: rgba(201, 164, 92, .65);
-            box-shadow: 0 24px 55px rgba(0, 0, 0, .2);
-            transform: translateY(-9px);
-        }
-
-        .cert-card i,
-        .box i {
-            color: var(--gold-light);
-            font-size: 2.5rem;
-            margin-bottom: 17px;
-            transition: transform .5s var(--ease);
-        }
-
-        .cert-card:hover i,
-        .box:hover i {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .cert-card h3,
-        .box h3 {
-            color: #fff;
-            font-size: 1.25rem;
-            margin-bottom: 8px;
-        }
-
-        .cert-card p {
-            color: rgba(255, 255, 255, .78);
-            font-size: .9rem;
-        }
-
-        /* Testimonials */
-        .testimonials::before {
-            background: radial-gradient(circle, rgba(201, 164, 92, .1), transparent 70%);
-            border-radius: 50%;
-            content: "";
-            height: 450px;
-            pointer-events: none;
-            position: absolute;
-            right: -170px;
-            top: -180px;
-            width: 450px;
-        }
-
-        .testimonials-container {
-            display: grid;
-            gap: 25px;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            position: relative;
-            z-index: 1;
-        }
-
-        .testimonial-card {
-            background: #fff;
-            border: 1px solid rgba(33, 75, 53, .1);
-            border-radius: 18px;
-            box-shadow: 0 14px 42px rgba(0, 0, 0, .055);
-            padding: 30px;
-            position: relative;
-            transition: transform .5s var(--ease), box-shadow .5s ease;
-        }
-
-        .testimonial-card::before {
-            color: rgba(201, 164, 92, .22);
-            content: "“";
-            font-family: "Playfair Display", serif;
-            font-size: 5rem;
-            left: 20px;
-            line-height: 1;
-            position: absolute;
-            top: 10px;
-        }
-
-        .testimonial-card:hover {
-            box-shadow: 0 25px 60px rgba(0, 0, 0, .1);
-            transform: translateY(-8px);
-        }
-
-        .stars {
-            color: var(--gold);
-            display: flex;
-            gap: 4px;
-            margin-bottom: 16px;
-            position: relative;
-        }
-
-        .testimonial-card > p {
-            color: var(--muted);
-            font-size: .98rem;
-            font-style: italic;
-            margin-bottom: 20px;
-            position: relative;
-        }
-
-        .testimonial-card h4 {
-            color: var(--green);
-            font-family: "DM Sans", sans-serif;
-            font-size: 1rem;
-        }
-
-        .testimonial-card span {
-            color: #8a8e88;
-            font-size: .88rem;
-        }
-
-        /* Products */
-        .product-container {
-            display: grid;
-            gap: 25px;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            position: relative;
-            z-index: 1;
-        }
-
-        .card {
-            background: #fff;
-            border: 1px solid rgba(33, 75, 53, .09);
-            border-radius: 18px;
-            box-shadow: 0 14px 38px rgba(0, 0, 0, .06);
-            overflow: hidden;
-            position: relative;
-            text-align: center;
-            transition: transform .55s var(--ease), box-shadow .5s ease;
-        }
-
-        .card::before {
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-            content: "";
-            height: 2px;
-            left: 0;
-            opacity: 0;
-            position: absolute;
-            right: 0;
-            top: 0;
-            transition: opacity .4s ease;
-            z-index: 1;
-        }
-
-        .card:hover {
-            box-shadow: 0 25px 55px rgba(0, 0, 0, .12);
-            transform: translateY(-8px);
-        }
-
-        .card:hover::before {
-            opacity: 1;
-        }
-
-        .card img {
-            height: 250px;
-            object-fit: cover;
-            transition: transform .8s var(--ease);
-        }
-
-        .card:hover img {
-            transform: scale(1.045);
-        }
-
-        .card h3 {
-            color: var(--green);
-            font-size: 1.35rem;
-            margin: 20px 10px 7px;
-        }
-
-        .card p {
-            color: var(--muted);
-            padding: 0 15px;
-        }
-
-        .order-btn {
-            background: linear-gradient(110deg, #b99550, #e1c47e, #b99550);
-            background-size: 200% 100%;
-            border-radius: 99px;
-            color: #17251b;
-            display: inline-block;
-            font-size: .9rem;
-            font-weight: 700;
-            margin: 20px;
-            padding: 11px 25px;
-            transition: background-position .5s ease, transform .35s var(--ease);
-        }
-
-        .order-btn:hover {
-            background-position: 100% 0;
-            transform: translateY(-3px);
-        }
-
-        /* Processing */
-        .processing {
-            background: linear-gradient(135deg, #f8f7f2, #fff);
-        }
-
-        .processing::before {
-            background: radial-gradient(circle, rgba(33, 75, 53, .08), transparent 70%);
-            border-radius: 50%;
-            bottom: -210px;
-            content: "";
-            height: 470px;
-            left: -160px;
-            pointer-events: none;
-            position: absolute;
-            width: 470px;
-        }
-
-        .processing-container {
-            display: grid;
-            gap: 22px;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            position: relative;
-            z-index: 1;
-        }
-
-        .process-card {
-            background: #fff;
-            border: 1px solid rgba(33, 75, 53, .09);
-            border-radius: 18px;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, .055);
-            padding: 30px 24px;
-            text-align: center;
-            transition: transform .5s var(--ease), box-shadow .5s ease, border-color .4s ease;
-        }
-
-        .process-card:hover {
-            border-color: rgba(201, 164, 92, .55);
-            box-shadow: 0 22px 48px rgba(0, 0, 0, .1);
-            transform: translateY(-8px);
-        }
-
-        .process-icon {
-            align-items: center;
-            background: linear-gradient(135deg, #b99550, #dfc27e);
-            border-radius: 50%;
-            color: #fff;
-            display: flex;
-            font-size: 1.6rem;
-            height: 62px;
-            justify-content: center;
-            margin: 0 auto 17px;
-            transition: transform .4s var(--ease);
-            width: 62px;
-        }
-
-        .process-card:hover .process-icon {
-            transform: scale(1.08) rotate(6deg);
-        }
-
-        .process-card h3 {
-            color: var(--green);
-            font-size: 1.2rem;
-            margin-bottom: 11px;
-        }
-
-        .process-card p {
-            color: var(--muted);
-            font-size: .92rem;
-            margin-bottom: 18px;
-        }
-
-        .process-step {
-            background: rgba(33, 75, 53, .08);
-            border-radius: 99px;
-            color: var(--green);
-            display: inline-block;
-            font-size: .82rem;
-            font-weight: 700;
-            padding: 6px 15px;
-        }
-
-        .process-info,
-        .hours-info-box {
-            align-items: center;
-            background: rgba(201, 164, 92, .13);
-            border: 1px solid rgba(201, 164, 92, .4);
-            border-radius: 15px;
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 30px;
-            padding: 22px;
-            position: relative;
-            text-align: center;
-            z-index: 1;
-        }
-
-        .process-info i,
-        .hours-info-box i {
-            color: var(--gold);
-            flex-shrink: 0;
-            font-size: 1.7rem;
-        }
-
-        /* Hours */
-        .hours-container {
-            margin: 0 auto;
-            max-width: 950px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hours-main {
-            display: grid;
-            gap: 24px;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .hours-card {
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, .08);
-            border: 1px solid rgba(255, 255, 255, .17);
-            border-radius: 18px;
-            padding: 30px;
-            transition: transform .45s var(--ease), background .4s ease;
-        }
-
-        .hours-card:hover {
-            background: rgba(255, 255, 255, .13);
-            transform: translateY(-6px);
-        }
-
-        .hours-card h3 {
-            align-items: center;
-            color: var(--gold-light);
-            display: flex;
-            font-size: 1.4rem;
-            gap: 12px;
-            margin-bottom: 22px;
-        }
-
-        .hours-list,
-        .support-items {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .hour-item {
-            align-items: center;
-            background: rgba(255, 255, 255, .07);
-            border-radius: 10px;
-            display: flex;
-            justify-content: space-between;
-            padding: 12px;
-        }
-
-        .day {
-            font-size: .91rem;
-            font-weight: 600;
-        }
-
-        .time {
-            color: var(--gold-light);
-            font-size: .9rem;
-            font-weight: 700;
-        }
-
-        .hours-card > p {
-            margin-bottom: 15px;
-        }
-
-        .support-link {
-            align-items: center;
-            background: rgba(201, 164, 92, .15);
-            border: 1px solid rgba(201, 164, 92, .35);
-            border-radius: 10px;
-            color: #fff;
-            display: flex;
-            font-weight: 600;
-            gap: 10px;
-            padding: 12px 14px;
-            transition: background .3s ease, transform .3s ease;
-        }
-
-        .support-link:hover {
-            background: rgba(201, 164, 92, .32);
-            transform: translateY(-2px);
-        }
-
-        .hours-info-box {
-            background: rgba(201, 164, 92, .12);
-            color: rgba(255, 255, 255, .9);
-        }
-
-        /* Gallery */
-        .gallery-container {
-            display: grid;
-            gap: 18px;
-            grid-template-columns: repeat(3, 1fr);
-            position: relative;
-            z-index: 1;
-        }
-
-        .gallery-container img {
-            border: 1px solid rgba(33, 75, 53, .1);
-            border-radius: 15px;
-            box-shadow: 0 12px 32px rgba(0, 0, 0, .08);
-            height: 260px;
-            object-fit: cover;
-            transition: transform .7s var(--ease), box-shadow .5s ease;
-        }
-
-        .gallery-container img:hover {
-            box-shadow: 0 22px 48px rgba(0, 0, 0, .15);
-            transform: scale(1.035);
-        }
-
-        /* Contact */
-        .contact-container {
-            display: grid;
-            gap: 36px;
-            grid-template-columns: 1.15fr .85fr;
-            position: relative;
-            z-index: 1;
-        }
-
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            background: #fff;
-            border: 1px solid #e1e3de;
-            border-radius: 11px;
-            color: var(--ink);
-            font-size: .96rem;
-            margin-bottom: 15px;
-            outline: none;
-            padding: 15px;
-            transition: border-color .3s ease, box-shadow .3s ease;
-        }
-
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            border-color: var(--green);
-            box-shadow: 0 0 0 4px rgba(33, 75, 53, .08);
-        }
-
-        .contact-form textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .contact-form button {
-            background: linear-gradient(110deg, #b99550, #e1c47e, #b99550);
-            background-size: 200% 100%;
-            border: 0;
-            border-radius: 99px;
-            color: #17251b;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 700;
-            padding: 14px;
-            transition: background-position .5s ease, transform .35s var(--ease);
-        }
-
-        .contact-form button:hover {
-            background-position: 100% 0;
-            transform: translateY(-3px);
-        }
-
-        .contact-right {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .contact-info,
-        .location-card {
-            background: #fff;
-            border: 1px solid rgba(33, 75, 53, .1);
-            border-radius: 17px;
-            box-shadow: 0 14px 38px rgba(0, 0, 0, .06);
-            padding: 25px;
-            transition: transform .45s var(--ease), box-shadow .45s ease;
-        }
-
-        .contact-info:hover,
-        .location-card:hover {
-            box-shadow: 0 22px 48px rgba(0, 0, 0, .1);
-            transform: translateY(-5px);
-        }
-
-        .contact-info h3,
-        .location-card h3 {
-            color: var(--green);
-            font-size: 1.65rem;
-            margin-bottom: 16px;
-        }
-
-        .contact-info p {
-            align-items: center;
-            color: var(--muted);
-            display: flex;
-            gap: 10px;
-            margin: 12px 0;
-            overflow-wrap: anywhere;
-        }
-
-        .contact-info p i {
-            color: var(--gold);
-            width: 18px;
-        }
-
-        .contact-info p a {
-            color: var(--green);
-            font-weight: 700;
-        }
-
-        .map-frame {
-            border-radius: 13px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, .1);
-            margin-bottom: 13px;
-            overflow: hidden;
-        }
-
-        .map-frame iframe {
-            border: 0;
-            display: block;
-            height: 240px;
-            width: 100%;
-        }
-
-        .location-card > p {
-            color: var(--muted);
-            font-size: .92rem;
-        }
-
-        /* Floating WhatsApp and top button */
-        .whatsapp-btn {
-            align-items: center;
-            background: #20b95a;
-            border: 1px solid rgba(255, 255, 255, .4);
-            border-radius: 99px;
-            bottom: 28px;
-            box-shadow: 0 14px 35px rgba(32, 185, 90, .28);
-            color: #fff;
-            display: flex;
-            font-size: .92rem;
-            font-weight: 700;
-            gap: 10px;
-            padding: 13px 18px;
-            position: fixed;
-            right: 24px;
-            transition: transform .3s ease, box-shadow .3s ease;
-            z-index: 900;
-        }
-
-        .whatsapp-btn:hover {
-            box-shadow: 0 18px 40px rgba(32, 185, 90, .38);
-            transform: translateY(-4px);
-        }
-
-        .whatsapp-btn i {
-            font-size: 1.25rem;
-        }
-
-        #topBtn {
-            align-items: center;
-            background: var(--green);
-            border: 0;
-            border-radius: 50%;
-            bottom: 28px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, .18);
-            color: #fff;
-            cursor: pointer;
-            display: flex;
-            height: 46px;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            position: fixed;
-            right: 24px;
-            transform: translateY(10px);
-            transition: opacity .3s ease, transform .3s ease, background .3s ease;
-            width: 46px;
-            z-index: 899;
-        }
-
-        #topBtn.visible {
-            opacity: 1;
-            pointer-events: auto;
-            transform: translateY(0);
-        }
-
-        #topBtn:hover {
-            background: var(--gold);
-        }
-
-        .scroll-progress {
-            background: var(--gold);
-            height: 2px;
-            inset: 0 auto auto 0;
-            pointer-events: none;
-            position: fixed;
-            transform: scaleX(0);
-            transform-origin: left;
-            width: 100%;
-            z-index: 2000;
-        }
-
-        /* Footer */
-        footer {
-            background:
-                radial-gradient(circle at 15% 25%, rgba(201, 164, 92, .1), transparent 35%),
-                linear-gradient(135deg, #101713, #1a251e);
-            color: #fff;
-            padding: 54px 8% 30px;
-            position: relative;
-            text-align: center;
-        }
-
-        footer h2 {
-            color: var(--gold-light);
-            font-size: 1.8rem;
-            letter-spacing: .08em;
-            margin-bottom: 10px;
-        }
-
-        footer > p {
-            color: rgba(255, 255, 255, .75);
-            margin-bottom: 22px;
-        }
-
-        .social {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            margin-bottom: 24px;
-        }
-
-        .social a {
-            align-items: center;
-            background: rgba(201, 164, 92, .1);
-            border: 1px solid rgba(201, 164, 92, .3);
-            border-radius: 50%;
-            color: var(--gold-light);
-            display: flex;
-            height: 44px;
-            justify-content: center;
-            transition: transform .3s ease, background .3s ease;
-            width: 44px;
-        }
-
-        .social a:hover {
-            background: var(--gold);
-            color: var(--green-dark);
-            transform: translateY(-4px);
-        }
-
-        footer .copy {
-            border-top: 1px solid rgba(255, 255, 255, .12);
-            color: rgba(255, 255, 255, .56);
-            font-size: .85rem;
-            margin: 0 auto;
-            max-width: 800px;
-            padding-top: 20px;
-        }
-
-        /* Motion */
-        .reveal {
-            opacity: 0;
-            transform: translateY(26px);
-            transition: opacity .8s var(--ease), transform .8s var(--ease);
-            transition-delay: var(--delay, 0ms);
-        }
-
-        .reveal.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @keyframes riseIn {
-            from { opacity: 0; transform: translateY(28px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes floatPhone {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes heroGlow {
-            from { opacity: .65; transform: scale(1); }
-            to { opacity: 1; transform: scale(1.04); }
-        }
-
-        /* Responsive */
-        @media (max-width: 1000px) {
-            header {
-                padding-left: 6%;
-                padding-right: 6%;
-            }
-
-            nav ul {
-                gap: 14px;
-            }
-
-            nav a {
-                font-size: .82rem;
-            }
-
-            .hero-content {
-                gap: 28px;
-                grid-template-columns: 1fr .8fr;
-            }
-
-            .phone-frame {
-                height: 550px;
-                width: 280px;
-            }
-
-            .about-container {
-                gap: 38px;
-            }
-        }
-
-        @media (max-width: 780px) {
-            :root {
-                --section-pad: 75px 7%;
-            }
-
-            header {
-                padding: 14px 7%;
-            }
-
-            header.scrolled {
-                padding: 10px 7%;
-            }
-
-            .menu-btn {
-                display: block;
-            }
-
-            nav {
-                background: rgba(250, 249, 245, .98);
-                box-shadow: 0 16px 25px rgba(0, 0, 0, .08);
-                left: 0;
-                max-height: 0;
-                overflow: hidden;
-                position: absolute;
-                right: 0;
-                top: 100%;
-                transition: max-height .4s var(--ease);
-            }
-
-            nav.active {
-                max-height: 430px;
-            }
-
-            nav ul {
-                align-items: stretch;
-                flex-direction: column;
-                gap: 0;
-                padding: 10px 7% 20px;
-            }
-
-            nav a {
-                display: block;
-                font-size: .98rem;
-                padding: 10px 0;
-            }
-
-            nav a::after {
-                bottom: 4px;
-                width: 48px;
-            }
-
-            .hero {
-                min-height: auto;
-                padding: 130px 7% 70px;
-            }
-
-            .hero-content {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-text {
-                max-width: 700px;
-            }
-
-            .phone-preview {
-                margin-top: 10px;
-            }
-
-            .about-container,
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-
-            .about-image {
-                max-width: 650px;
-            }
-
-            .hours-main {
-                grid-template-columns: 1fr;
-            }
-
-            .gallery-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 520px) {
-            :root {
-                --section-pad: 65px 6%;
-            }
-
-            .logo {
-                gap: 7px;
-            }
-
-            .logo i {
-                font-size: 23px;
-            }
-
-            .logo h2 {
-                font-size: .88rem;
-            }
-
-            .hero {
-                padding-left: 6%;
-                padding-right: 6%;
-            }
-
-            .hero-text h1 {
-                font-size: clamp(2.7rem, 12vw, 3.8rem);
-            }
-
-            .hero-text p {
-                font-size: .98rem;
-            }
-
-            .phone-frame {
-                height: 545px;
-                width: 275px;
-            }
-
-            .product-container,
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .card img {
-                height: 230px;
-            }
-
-            .gallery-container {
-                gap: 12px;
-            }
-
-            .gallery-container img {
-                height: 175px;
-            }
-
-            .process-info,
-            .hours-info-box {
-                flex-direction: column;
-            }
-
-            .hour-item {
-                align-items: flex-start;
-                flex-direction: column;
-                gap: 3px;
-            }
-
-            .whatsapp-btn {
-                bottom: 18px;
-                right: 18px;
-            }
-
-            #topBtn {
-                bottom: 80px;
-                right: 20px;
-            }
-
-            .contact-info,
-            .location-card,
-            .hours-card {
-                padding: 21px;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                animation-duration: .01ms !important;
-                animation-iteration-count: 1 !important;
-                scroll-behavior: auto !important;
-                transition-duration: .01ms !important;
-            }
-
-            .reveal {
-                opacity: 1;
-                transform: none;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#173c2b">
+  <title>SULYMAS FARM RICE | Premium Quality Rice</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    :root {
+      --green: #173c2b;
+      --green-dark: #102b1e;
+      --gold: #c9a45c;
+      --gold-light: #e2c987;
+      --cream: #f7f4ed;
+      --ink: #252a25;
+      --muted: #656b64;
+      --ease: cubic-bezier(.22, 1, .36, 1);
+      --shadow: 0 18px 48px rgba(23, 60, 43, .10);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    body, button, input, textarea {
+      font-family: "DM Sans", sans-serif;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    section {
+      padding: 100px 9%;
+      scroll-margin-top: 75px;
+    }
+
+    .section-title {
+      position: relative;
+      margin-bottom: 56px;
+      color: var(--green);
+      font: 600 clamp(2rem, 4vw, 3rem)/1.15 "Playfair Display", serif;
+      text-align: center;
+      letter-spacing: -.02em;
+    }
+
+    .section-title::after {
+      display: block;
+      width: 66px;
+      height: 2px;
+      margin: 19px auto 0;
+      background: var(--gold);
+      content: "";
+      transition: width .6s var(--ease);
+    }
+
+    .section-title:hover::after {
+      width: 112px;
+    }
+
+    .section-title.light {
+      color: var(--gold-light);
+    }
+
+    .section-title.light::after {
+      background: #fff;
+    }
+
+    .scroll-progress {
+      position: fixed;
+      z-index: 2001;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 3px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      pointer-events: none;
+    }
+
+    /* Header and navigation */
+    .site-header {
+      position: fixed;
+      z-index: 2000;
+      inset: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 19px 9%;
+      border-bottom: 1px solid rgba(201, 164, 92, .16);
+      background: rgba(250, 249, 245, .94);
+      backdrop-filter: blur(16px);
+      transition: padding .4s var(--ease), box-shadow .4s ease, background .4s ease;
+    }
+
+    .site-header.scrolled {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      box-shadow: 0 8px 30px rgba(20, 40, 27, .10);
+      background: rgba(250, 249, 245, .97);
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--green);
+    }
+
+    .logo i {
+      color: var(--gold);
+      font-size: 1.65rem;
+    }
+
+    .logo span {
+      font: 600 1.15rem/1.1 "Playfair Display", serif;
+      letter-spacing: .045em;
+    }
+
+    .site-nav ul {
+      display: flex;
+      align-items: center;
+      gap: clamp(14px, 2.2vw, 32px);
+    }
+
+    .site-nav a {
+      position: relative;
+      color: #3d453e;
+      font-size: .9rem;
+      font-weight: 600;
+      transition: color .25s ease;
+    }
+
+    .site-nav a::after {
+      position: absolute;
+      right: 0;
+      bottom: -8px;
+      left: 0;
+      height: 1px;
+      background: var(--gold);
+      content: "";
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform .4s var(--ease);
+    }
+
+    .site-nav a:hover,
+    .site-nav a.active {
+      color: var(--green);
+    }
+
+    .site-nav a:hover::after,
+    .site-nav a.active::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .menu-btn {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(23, 60, 43, .15);
+      border-radius: 50%;
+      background: transparent;
+      color: var(--green);
+      cursor: pointer;
+      font-size: 1.15rem;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      display: flex;
+      min-height: 100vh;
+      align-items: center;
+      overflow: hidden;
+      padding: 130px 9% 85px;
+      background:
+        linear-gradient(90deg, rgba(10, 25, 16, .83), rgba(10, 25, 16, .47) 55%, rgba(10, 25, 16, .23)),
+        url("images/hero.jpg") center/cover;
+      color: #fff;
+      isolation: isolate;
+    }
+
+    .hero::before,
+    .hero::after {
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      content: "";
+      pointer-events: none;
+    }
+
+    .hero::before {
+      background:
+        radial-gradient(circle at 75% 25%, rgba(201, 164, 92, .22), transparent 30%),
+        radial-gradient(circle at 20% 85%, rgba(255, 255, 255, .08), transparent 25%);
+      animation: hero-light 12s ease-in-out infinite alternate;
+    }
+
+    .hero::after {
+      background: linear-gradient(115deg, transparent 35%, rgba(255,255,255,.07) 50%, transparent 65%);
+      transform: translateX(-100%);
+      animation: hero-sheen 10s ease-in-out infinite;
+    }
+
+    .hero-content {
+      display: grid;
+      width: 100%;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .hero-text {
+      max-width: 650px;
+      animation: rise-in .9s var(--ease) both;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      color: var(--gold-light);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .19em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 32px;
+      height: 1px;
+      background: currentColor;
+      content: "";
+    }
+
+    .hero h1 {
+      max-width: 700px;
+      margin-bottom: 22px;
+      font: 500 clamp(3rem, 6vw, 5.3rem)/1.04 "Playfair Display", serif;
+      letter-spacing: -.045em;
+      text-wrap: balance;
+    }
+
+    .hero-text > p {
+      max-width: 550px;
+      margin-bottom: 32px;
+      color: rgba(255,255,255,.84);
+      font-size: 1.05rem;
+      line-height: 1.9;
+    }
+
+    .btn {
+      display: inline-flex;
+      min-height: 52px;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 13px 27px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      background: linear-gradient(110deg, #b99550, #e1c77f, #b99550);
+      background-size: 200% 100%;
+      color: #1d2b20;
+      font-weight: 700;
+      transition: background-position .6s ease, transform .4s var(--ease), box-shadow .4s ease;
+    }
+
+    .btn:hover {
+      background-position: 100% 0;
+      box-shadow: 0 12px 30px rgba(201, 164, 92, .25);
+      transform: translateY(-4px);
+    }
+
+    /* Animated product preview */
+    .phone-preview {
+      display: flex;
+      justify-content: center;
+      animation: float 7s ease-in-out infinite;
+    }
+
+    .phone-frame {
+      position: relative;
+      width: min(320px, 100%);
+      height: 600px;
+      padding: 17px;
+      border: 1px solid rgba(255,255,255,.24);
+      border-radius: 48px;
+      background: rgba(15, 27, 19, .78);
+      box-shadow: 0 35px 90px rgba(0,0,0,.42), inset 0 0 0 5px rgba(255,255,255,.05);
+      backdrop-filter: blur(8px);
+    }
+
+    .phone-top {
+      width: 72px;
+      height: 7px;
+      margin: 7px auto 12px;
+      border-radius: 99px;
+      background: rgba(255,255,255,.25);
+    }
+
+    .phone-screen {
+      position: relative;
+      height: calc(100% - 26px);
+      overflow: hidden;
+      border-radius: 34px;
+      background: var(--green-dark);
+    }
+
+    .phone-slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 22px;
+      color: #fff;
+      opacity: 0;
+      transform: scale(1.025);
+      transition: opacity .8s ease, transform 1s var(--ease);
+    }
+
+    .phone-slide.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .phone-slide img {
+      height: 225px;
+      border-radius: 22px;
+      object-fit: cover;
+      box-shadow: 0 18px 38px rgba(0,0,0,.3);
+    }
+
+    .slide-badge {
+      align-self: flex-start;
+      padding: 7px 12px;
+      border: 1px solid rgba(201,164,92,.35);
+      border-radius: 999px;
+      background: rgba(201,164,92,.13);
+      color: var(--gold-light);
+      font-size: .75rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .phone-slide h3 {
+      margin-top: 12px;
+      font: 600 1.4rem "Playfair Display", serif;
+    }
+
+    .phone-slide p {
+      color: rgba(255,255,255,.8);
+      font-size: .9rem;
+    }
+
+    .slide-note {
+      color: #d7e8d8;
+      font-size: .82rem;
+    }
+
+    /* About */
+    .about {
+      position: relative;
+      overflow: hidden;
+      background: #fbfaf6;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      align-items: center;
+      gap: 65px;
+    }
+
+    .about-image {
+      position: relative;
+    }
+
+    .image-wrapper {
+      overflow: hidden;
+      border-radius: 5px;
+      box-shadow: 22px 22px 0 rgba(201,164,92,.16), var(--shadow);
+    }
+
+    .image-wrapper img {
+      min-height: 490px;
+      object-fit: cover;
+      transition: transform 1s var(--ease);
+    }
+
+    .image-wrapper:hover img {
+      transform: scale(1.045);
+    }
+
+    .image-badge {
+      position: absolute;
+      top: 22px;
+      right: -15px;
+      padding: 12px 19px;
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 2px;
+      background: var(--gold);
+      color: #fff;
+      font-size: .85rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      box-shadow: 0 10px 24px rgba(0,0,0,.12);
+    }
+
+    .about-copy h3 {
+      margin-bottom: 20px;
+      color: var(--green);
+      font: 600 clamp(1.8rem, 3vw, 2.5rem)/1.2 "Playfair Display", serif;
+    }
+
+    .about-copy > p {
+      margin-bottom: 17px;
+      color: var(--muted);
+      line-height: 1.9;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin: 25px 0;
+      padding: 22px 0;
+      border-top: 1px solid rgba(23,60,43,.12);
+      border-bottom: 1px solid rgba(23,60,43,.12);
+    }
+
+    .feature-item {
+      padding: 16px;
+      border: 1px solid transparent;
+      background: rgba(23,60,43,.035);
+      transition: transform .4s var(--ease), border-color .4s ease, background .4s ease;
+    }
+
+    .feature-item:hover {
+      transform: translateY(-4px);
+      border-color: rgba(201,164,92,.35);
+      background: #fff;
+    }
+
+    .feature-item i {
+      margin-bottom: 8px;
+      color: var(--gold);
+      font-size: 1.35rem;
+    }
+
+    .feature-item h4 {
+      color: var(--green);
+      font-size: .95rem;
+    }
+
+    .feature-item p {
+      color: var(--muted);
+      font-size: .82rem;
+    }
+
+    .benefits-title {
+      margin-bottom: 12px;
+      color: var(--green);
+      font: 600 1.25rem "Playfair Display", serif;
+    }
+
+    .benefits-list {
+      display: grid;
+      gap: 9px;
+    }
+
+    .benefits-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: #4f584f;
+      font-size: .92rem;
+    }
+
+    .benefits-list i {
+      margin-top: 4px;
+      color: var(--gold);
+    }
+
+    /* Certifications and dark sections */
+    .dark-section {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #214b34, #102b1e);
+      color: #fff;
+    }
+
+    .dark-section::before {
+      position: absolute;
+      top: -260px;
+      right: -140px;
+      width: 560px;
+      height: 560px;
+      border: 1px solid rgba(201,164,92,.13);
+      border-radius: 50%;
+      box-shadow: 0 0 0 50px rgba(201,164,92,.025), 0 0 0 110px rgba(201,164,92,.02);
+      content: "";
+      pointer-events: none;
+    }
+
+    .cert-grid,
+    .why-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .cert-card,
+    .why-card {
+      position: relative;
+      padding: 32px 22px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.055);
+      text-align: center;
+      transition: transform .5s var(--ease), border-color .4s ease, background .4s ease, box-shadow .4s ease;
+    }
+
+    .cert-card:hover,
+    .why-card:hover {
+      transform: translateY(-9px);
+      border-color: rgba(201,164,92,.65);
+      background: rgba(255,255,255,.1);
+      box-shadow: 0 20px 50px rgba(0,0,0,.18);
+    }
+
+    .cert-card i,
+    .why-card i {
+      display: block;
+      margin-bottom: 18px;
+      color: var(--gold-light);
+      font-size: 2.3rem;
+      transition: transform .4s var(--ease);
+    }
+
+    .cert-card:hover i,
+    .why-card:hover i {
+      transform: scale(1.12);
+    }
+
+    .cert-card h3,
+    .why-card h3 {
+      margin-bottom: 7px;
+      color: #fff;
+      font: 600 1.25rem "Playfair Display", serif;
+    }
+
+    .cert-card p {
+      color: rgba(255,255,255,.72);
+      font-size: .88rem;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      background: #f1eee6;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .testimonial-card {
+      position: relative;
+      padding: 30px;
+      border: 1px solid rgba(23,60,43,.09);
+      background: #fff;
+      box-shadow: 0 12px 35px rgba(23,60,43,.055);
+      transition: transform .5s var(--ease), box-shadow .5s ease;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 55px rgba(23,60,43,.12);
+    }
+
+    .quote-mark {
+      position: absolute;
+      top: 12px;
+      right: 20px;
+      color: rgba(201,164,92,.22);
+      font: 700 5rem/1 "Playfair Display", serif;
+    }
+
+    .stars {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 18px;
+      color: var(--gold);
+      font-size: .9rem;
+    }
+
+    .testimonial-card blockquote {
+      position: relative;
+      margin-bottom: 22px;
+      color: #5e655e;
+      font-size: .96rem;
+      font-style: italic;
+      line-height: 1.8;
+    }
+
+    .testimonial-card h3 {
+      color: var(--green);
+      font: 600 1.15rem "Playfair Display", serif;
+    }
+
+    .testimonial-card span {
+      color: #858b83;
+      font-size: .85rem;
+    }
+
+    /* Products */
+    .products {
+      background: #fbfaf6;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .product-card {
+      overflow: hidden;
+      border: 1px solid rgba(23,60,43,.09);
+      background: #fff;
+      box-shadow: 0 10px 30px rgba(23,60,43,.06);
+      transition: transform .5s var(--ease), box-shadow .5s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-9px);
+      box-shadow: 0 22px 48px rgba(23,60,43,.13);
+    }
+
+    .product-image {
+      position: relative;
+      overflow: hidden;
+      height: 240px;
+      background: #e8e4d8;
+    }
+
+    .product-image img {
+      height: 100%;
+      object-fit: cover;
+      transition: transform .8s var(--ease);
+    }
+
+    .product-card:hover .product-image img {
+      transform: scale(1.06);
+    }
+
+    .product-details {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .product-details h3 {
+      margin-bottom: 7px;
+      color: var(--green);
+      font: 600 1.3rem "Playfair Display", serif;
+    }
+
+    .product-details p {
+      min-height: 26px;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .order-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      margin-top: 18px;
+      padding: 11px 20px;
+      border: 1px solid var(--green);
+      border-radius: 99px;
+      background: var(--green);
+      color: #fff;
+      font-size: .88rem;
+      font-weight: 700;
+      transition: transform .3s var(--ease), background .3s ease, border-color .3s ease;
+    }
+
+    .order-btn:hover {
+      transform: translateY(-3px);
+      border-color: var(--gold);
+      background: var(--gold);
+      color: #1d2b20;
+    }
+
+    /* Processing */
+    .processing {
+      background: #f0eee7;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .process-card {
+      padding: 30px;
+      border: 1px solid rgba(23,60,43,.09);
+      background: rgba(255,255,255,.78);
+      text-align: center;
+      transition: transform .5s var(--ease), box-shadow .5s ease, border-color .4s ease;
+    }
+
+    .process-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(201,164,92,.55);
+      box-shadow: var(--shadow);
+    }
+
+    .process-icon {
+      display: grid;
+      width: 62px;
+      height: 62px;
+      place-items: center;
+      margin: 0 auto 18px;
+      border: 1px solid rgba(201,164,92,.35);
+      border-radius: 50%;
+      background: #f6f0e2;
+      color: var(--green);
+      font-size: 1.4rem;
+      transition: transform .4s var(--ease), background .4s ease, color .4s ease;
+    }
+
+    .process-card:hover .process-icon {
+      transform: rotate(8deg) scale(1.08);
+      background: var(--gold);
+      color: #fff;
+    }
+
+    .process-card h3 {
+      margin-bottom: 10px;
+      color: var(--green);
+      font: 600 1.3rem "Playfair Display", serif;
+    }
+
+    .process-card p {
+      margin-bottom: 17px;
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.75;
+    }
+
+    .process-step {
+      display: inline-block;
+      padding: 5px 13px;
+      border: 1px solid rgba(23,60,43,.15);
+      border-radius: 99px;
+      color: var(--green);
+      font-size: .78rem;
+      font-weight: 700;
+    }
+
+    .process-info,
+    .hours-info {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 28px;
+      padding: 20px;
+      border: 1px solid rgba(201,164,92,.35);
+      background: rgba(201,164,92,.1);
+      color: var(--green);
+      text-align: center;
+    }
+
+    .process-info i,
+    .hours-info i {
+      color: var(--gold);
+      font-size: 1.5rem;
+    }
+
+    /* Why us */
+    .why-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .why-card {
+      padding: 30px 18px;
+    }
+
+    /* Gallery */
+    .gallery {
+      background: #fbfaf6;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      height: 270px;
+      background: #e5e0d4;
+    }
+
+    .gallery-item img {
+      height: 100%;
+      object-fit: cover;
+      transition: transform .8s var(--ease), filter .5s ease;
+    }
+
+    .gallery-item:hover img {
+      filter: saturate(1.08);
+      transform: scale(1.06);
+    }
+
+    /* Hours */
+    .hours {
+      background: linear-gradient(135deg, #214b34, #102b1e);
+      color: #fff;
+    }
+
+    .hours-content {
+      position: relative;
+      max-width: 950px;
+      margin: 0 auto;
+    }
+
+    .hours-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .hours-card {
+      padding: 28px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06);
+      transition: transform .4s var(--ease), border-color .4s ease, background .4s ease;
+    }
+
+    .hours-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(201,164,92,.6);
+      background: rgba(255,255,255,.09);
+    }
+
+    .hours-card h3 {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      color: var(--gold-light);
+      font: 600 1.4rem "Playfair Display", serif;
+    }
+
+    .hours-card h3 i {
+      font-size: 1.2rem;
+    }
+
+    .hour-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 13px 0;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      font-size: .92rem;
+    }
+
+    .hour-row:last-child {
+      border-bottom: 0;
+    }
+
+    .hour-row strong {
+      color: var(--gold-light);
+      text-align: right;
+    }
+
+    .support-links {
+      display: grid;
+      gap: 11px;
+    }
+
+    .support-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border: 1px solid rgba(201,164,92,.4);
+      color: #fff;
+      transition: background .3s ease, color .3s ease, transform .3s ease;
+    }
+
+    .support-link:hover {
+      transform: translateY(-2px);
+      background: var(--gold);
+      color: var(--green-dark);
+    }
+
+    .hours-info {
+      margin-top: 22px;
+      border-color: rgba(201,164,92,.4);
+      background: rgba(201,164,92,.12);
+      color: rgba(255,255,255,.9);
+    }
+
+    /* Contact */
+    .contact {
+      background: #f1eee6;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      align-items: start;
+      gap: 35px;
+    }
+
+    .contact-form,
+    .contact-info,
+    .location-card {
+      padding: 28px;
+      border: 1px solid rgba(23,60,43,.09);
+      background: #fff;
+      box-shadow: 0 12px 35px rgba(23,60,43,.06);
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 14px 15px;
+      border: 1px solid #dedfd8;
+      border-radius: 0;
+      outline: none;
+      background: #fbfaf7;
+      color: var(--ink);
+      font-size: .95rem;
+      transition: border-color .3s ease, box-shadow .3s ease, background .3s ease;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: var(--gold);
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(201,164,92,.13);
+    }
+
+    .contact-form textarea {
+      resize: vertical;
+    }
+
+    .contact-form button {
+      min-height: 50px;
+      border: 0;
+      background: var(--green);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      transition: background .3s ease, transform .3s ease;
+    }
+
+    .contact-form button:hover {
+      transform: translateY(-2px);
+      background: #24583a;
+    }
+
+    .contact-side {
+      display: grid;
+      gap: 20px;
+    }
+
+    .contact-info h3,
+    .location-card h3 {
+      margin-bottom: 18px;
+      color: var(--green);
+      font: 600 1.6rem "Playfair Display", serif;
+    }
+
+    .contact-info p {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin: 12px 0;
+      color: var(--muted);
+      overflow-wrap: anywhere;
+    }
+
+    .contact-info i {
+      width: 18px;
+      margin-top: 4px;
+      color: var(--gold);
+    }
+
+    .contact-info a {
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .map-frame {
+      overflow: hidden;
+      margin-bottom: 13px;
+    }
+
+    .map-frame iframe {
+      display: block;
+      width: 100%;
+      height: 230px;
+      border: 0;
+    }
+
+    .location-card > p {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    /* Footer and floating controls */
+    footer {
+      position: relative;
+      overflow: hidden;
+      padding: 55px 9% 30px;
+      background: #101b14;
+      color: #fff;
+      text-align: center;
+    }
+
+    footer::before {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0, rgba(201,164,92,.12), transparent 55%);
+      content: "";
+      pointer-events: none;
+    }
+
+    footer h2,
+    footer p,
+    .social,
+    .copyright {
+      position: relative;
+    }
+
+    footer h2 {
+      margin-bottom: 10px;
+      color: var(--gold-light);
+      font: 600 1.8rem "Playfair Display", serif;
+      letter-spacing: .04em;
+    }
+
+    footer > p {
+      margin-bottom: 22px;
+      color: rgba(255,255,255,.72);
+    }
+
+    .social {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .social a {
+      display: grid;
+      width: 44px;
+      height: 44px;
+      place-items: center;
+      border: 1px solid rgba(201,164,92,.35);
+      border-radius: 50%;
+      color: var(--gold-light);
+      transition: transform .3s ease, color .3s ease, background .3s ease;
+    }
+
+    .social a:hover {
+      transform: translateY(-4px);
+      background: var(--gold);
+      color: var(--green-dark);
+    }
+
+    .copyright {
+      color: rgba(255,255,255,.52);
+      font-size: .85rem;
+    }
+
+    .whatsapp-btn {
+      position: fixed;
+      z-index: 1500;
+      right: 22px;
+      bottom: 28px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 18px;
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 99px;
+      background: #1fae58;
+      box-shadow: 0 12px 35px rgba(31,174,88,.28);
+      color: #fff;
+      font-size: .9rem;
+      font-weight: 700;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+
+    .whatsapp-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 42px rgba(31,174,88,.38);
+    }
+
+    .whatsapp-btn i {
+      font-size: 1.2rem;
+    }
+
+    .back-to-top {
+      position: fixed;
+      z-index: 1500;
+      right: 26px;
+      bottom: 92px;
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      background: var(--green);
+      color: #fff;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity .3s ease, transform .3s ease, background .3s ease;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      background: var(--gold);
+      color: var(--green-dark);
+    }
+
+    /* Scroll reveals */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .8s var(--ease), transform .8s var(--ease);
+      transition-delay: var(--delay, 0ms);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes rise-in {
+      from { opacity: 0; transform: translateY(25px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes hero-light {
+      from { transform: translateX(-1%) scale(1); }
+      to { transform: translateX(1%) scale(1.04); }
+    }
+
+    @keyframes hero-sheen {
+      0%, 45% { transform: translateX(-100%); }
+      75%, 100% { transform: translateX(100%); }
+    }
+
+    /* Responsive */
+    @media (max-width: 1050px) {
+      section { padding: 80px 7%; }
+      .site-header { padding-right: 7%; padding-left: 7%; }
+      .hero { padding-right: 7%; padding-left: 7%; }
+      .hero-content { gap: 25px; }
+      .phone-frame { width: 290px; height: 560px; }
+      .cert-grid, .why-grid, .product-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { gap: 40px; }
+    }
+
+    @media (max-width: 760px) {
+      section { padding: 72px 6%; }
+      .site-header { padding: 14px 6%; }
+      .site-header.scrolled { padding-top: 10px; padding-bottom: 10px; }
+      .menu-btn { display: grid; place-items: center; }
+      .site-nav {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        max-height: 0;
+        overflow: hidden;
+        background: rgba(250,249,245,.98);
+        box-shadow: 0 15px 25px rgba(20,40,27,.08);
+        transition: max-height .4s var(--ease);
+      }
+      .site-nav.open { max-height: 420px; }
+      .site-nav ul {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 0;
+        padding: 10px 6% 20px;
+      }
+      .site-nav a {
+        display: block;
+        padding: 11px 0;
+      }
+      .site-nav a::after { display: none; }
+      .hero {
+        min-height: auto;
+        padding: 125px 6% 70px;
+        background-position: center;
+      }
+      .hero-content { grid-template-columns: 1fr; }
+      .hero-text { text-align: center; }
+      .hero-text > p { margin-right: auto; margin-left: auto; }
+      .eyebrow { justify-content: center; }
+      .phone-preview { margin-top: 15px; }
+      .phone-frame { width: min(300px, 88vw); height: 555px; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .about-grid { gap: 38px; }
+      .image-wrapper img { min-height: 340px; max-height: 480px; }
+      .image-badge { right: 10px; }
+      .testimonial-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-item { height: 220px; }
+      .hours-grid { grid-template-columns: 1fr; }
+      .contact-grid { gap: 22px; }
+    }
+
+    @media (max-width: 480px) {
+      .logo span { font-size: .95rem; }
+      .logo i { font-size: 1.35rem; }
+      .hero h1 { font-size: clamp(2.7rem, 12vw, 3.6rem); }
+      .hero-text > p { font-size: .96rem; }
+      .section-title { margin-bottom: 38px; }
+      .features-grid, .product-grid, .process-grid, .cert-grid, .why-grid {
+        grid-template-columns: 1fr;
+      }
+      .product-image { height: 250px; }
+      .gallery-grid { gap: 10px; }
+      .gallery-item { height: 165px; }
+      .process-info, .hours-info { align-items: flex-start; text-align: left; }
+      .contact-form, .contact-info, .location-card { padding: 21px; }
+      .whatsapp-btn { right: 14px; bottom: 18px; padding: 12px 15px; }
+      .back-to-top { right: 20px; bottom: 76px; }
+      .hour-row { font-size: .82rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
 </head>
+
 <body>
+  <div class="scroll-progress" aria-hidden="true"></div>
 
-    <div class="scroll-progress" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="logo" href="#home" aria-label="SULYMAS FARM RICE home">
+      <i class="fas fa-seedling" aria-hidden="true"></i>
+      <span>SULYMAS FARM RICE</span>
+    </a>
 
-    <!-- Header -->
-    <header>
-        <a class="logo" href="#home" aria-label="SULYMAS FARM RICE home">
-            <i class="fas fa-seedling" aria-hidden="true"></i>
-            <h2>SULYMAS FARM RICE</h2>
-        </a>
+    <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#processing">Processing</a></li>
+        <li><a href="#hours">Hours</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
 
-        <nav id="site-nav" aria-label="Main navigation">
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#processing">Processing</a></li>
-                <li><a href="#hours">Hours</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+    <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+      <i class="fas fa-bars" aria-hidden="true"></i>
+    </button>
+  </header>
 
-        <button class="menu-btn" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav">
-            <i class="fas fa-bars" aria-hidden="true"></i>
-        </button>
-    </header>
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="hero-text">
+          <span class="eyebrow">From our farm to your table</span>
+          <h1>Fresh Rice, Grown with Care.</h1>
+          <p>
+            SULYMAS FARM RICE provides premium, stone-free, healthy and
+            affordable rice, carefully processed for homes, restaurants
+            and businesses.
+          </p>
+          <a class="btn" href="#products">Explore Our Rice <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+        </div>
 
-    <main>
-        <!-- Hero -->
-        <section class="hero" id="home">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <span class="eyebrow">From our farm to your table</span>
-                    <h1>Fresh Rice Straight From The Farm</h1>
-                    <p>
-                        SULYMAS FARM RICE provides premium, stone-free, healthy and
-                        affordable rice, carefully processed for homes, restaurants
-                        and businesses.
-                    </p>
-                    <a href="#products" class="btn">Explore Our Rice <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+        <div class="phone-preview" aria-label="Featured rice products">
+          <div class="phone-frame">
+            <div class="phone-top"></div>
+            <div class="phone-screen">
+              <article class="phone-slide active">
+                <span class="slide-badge">Best seller</span>
+                <img src="rice 10kg.jpeg" alt="SulyMas premium rice pack">
+                <div>
+                  <h3>Family Rice Pack</h3>
+                  <p>Premium polished rice that cooks light and fluffy every time.</p>
                 </div>
-
-                <div class="phone-preview" aria-label="Featured rice products">
-                    <div class="phone-frame">
-                        <div class="phone-top"></div>
-                        <div class="phone-screen">
-                            <article class="phone-slide active">
-                                <span class="slide-badge">Best Seller</span>
-                                <img src="rice 10kg.jpeg" alt="SULYMAS premium rice bag">
-                                <div>
-                                    <h4>5KG Family Pack</h4>
-                                    <p>Premium polished rice that cooks light and fluffy every time.</p>
-                                    <span class="slide-note">Order directly from your phone.</span>
-                                </div>
-                            </article>
-                            <article class="phone-slide">
-                                <span class="slide-badge">Fast Delivery</span>
-                                <img src="rice 5kg.PNG" alt="SULYMAS rice available for delivery">
-                                <div>
-                                    <h4>Delivered Fresh</h4>
-                                    <p>Get quality rice delivered for your family or business.</p>
-                                    <span class="slide-note">Nationwide shipping available.</span>
-                                </div>
-                            </article>
-                            <article class="phone-slide">
-                                <span class="slide-badge">Carefully Selected</span>
-                                <img src="rice 50kg.PNG" alt="SULYMAS wholesale rice bag">
-                                <div>
-                                    <h4>Stone-Free Rice</h4>
-                                    <p>Carefully processed for quality, taste and consistency.</p>
-                                    <span class="slide-note">Explore our full product range.</span>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
+                <span class="slide-note">A little goodness in every grain.</span>
+              </article>
+              <article class="phone-slide">
+                <span class="slide-badge">Made for sharing</span>
+                <img src="rice 5kg.PNG" alt="SulyMas 5 kilogram rice bag">
+                <div>
+                  <h3>Freshly Delivered</h3>
+                  <p>Carefully packed and delivered to your doorstep.</p>
                 </div>
-            </div>
-        </section>
-
-        <!-- About -->
-        <section class="about" id="about">
-            <h2 class="title">About SULYMAS FARM RICE</h2>
-
-            <div class="about-container">
-                <div class="about-image">
-                    <div class="image-wrapper">
-                        <img src="sulymas.jpg" alt="SULYMAS rice farm">
-                        <span class="image-badge">Est. 2018</span>
-                    </div>
+                <span class="slide-note">Nationwide shipping available.</span>
+              </article>
+              <article class="phone-slide">
+                <span class="slide-badge">Quality assured</span>
+                <img src="rice 50kg.PNG" alt="SulyMas 50 kilogram rice bag">
+                <div>
+                  <h3>Stone-Free Rice</h3>
+                  <p>Thoughtfully processed for taste, quality and consistency.</p>
                 </div>
-
-                <div class="about-text">
-                    <h3>Premium Quality Rice, Farm to Table</h3>
-                    <p>
-                        SULYMAS FARM RICE represents years of dedication to rice
-                        production. We are committed to delivering quality Nigerian
-                        rice through careful farming and processing.
-                    </p>
-                    <p>
-                        Each grain is cultivated, harvested and processed with care
-                        to deliver quality, nutrition and taste. We serve homes,
-                        restaurants and businesses across Nigeria.
-                    </p>
-
-                    <div class="features-grid">
-                        <div class="feature-item">
-                            <i class="fas fa-leaf" aria-hidden="true"></i>
-                            <h4>100% Natural</h4>
-                            <p>No additives or chemicals</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-water" aria-hidden="true"></i>
-                            <h4>Pure Grains</h4>
-                            <p>Stone-free guarantee</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-flask" aria-hidden="true"></i>
-                            <h4>Quality Checked</h4>
-                            <p>Carefully inspected</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-star" aria-hidden="true"></i>
-                            <h4>Made with Care</h4>
-                            <p>Quality in every grain</p>
-                        </div>
-                    </div>
-
-                    <h4 class="benefits-title">Why Choose SULYMAS?</h4>
-                    <ul class="benefits-list">
-                        <li><i class="fas fa-check-circle" aria-hidden="true"></i> Premium-grade rice quality</li>
-                        <li><i class="fas fa-check-circle" aria-hidden="true"></i> Carefully cleaned and processed</li>
-                        <li><i class="fas fa-check-circle" aria-hidden="true"></i> Great taste and consistency</li>
-                        <li><i class="fas fa-check-circle" aria-hidden="true"></i> Suitable for a variety of meals</li>
-                        <li><i class="fas fa-check-circle" aria-hidden="true"></i> Delivery options available</li>
-                    </ul>
-                </div>
+                <span class="slide-note">Find the right pack for your needs.</span>
+              </article>
             </div>
-        </section>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <!-- Certifications -->
-        <section class="certifications">
-            <h2 class="title">Our Commitment to Quality</h2>
-            <div class="cert-container">
-                <article class="cert-card">
-                    <i class="fas fa-medal" aria-hidden="true"></i>
-                    <h3>Quality First</h3>
-                    <p>We take care at every stage of processing.</p>
-                </article>
-                <article class="cert-card">
-                    <i class="fas fa-certificate" aria-hidden="true"></i>
-                    <h3>Food Safety</h3>
-                    <p>Our products are handled with care and attention.</p>
-                </article>
-                <article class="cert-card">
-                    <i class="fas fa-shield-halved" aria-hidden="true"></i>
-                    <h3>Trusted Service</h3>
-                    <p>We work hard to serve homes and businesses reliably.</p>
-                </article>
-                <article class="cert-card">
-                    <i class="fas fa-leaf" aria-hidden="true"></i>
-                    <h3>Farm Fresh</h3>
-                    <p>Carefully selected rice for your table.</p>
-                </article>
-            </div>
-        </section>
+    <section class="about" id="about">
+      <h2 class="section-title">A Better Grain, From Farm to Table</h2>
 
-        <!-- Testimonials -->
-        <section class="testimonials">
-            <h2 class="title">What Our Customers Say</h2>
-            <div class="testimonials-container">
-                <article class="testimonial-card">
-                    <div class="stars" aria-label="5 out of 5 stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p>“SULYMAS rice is absolutely the best! It cooks beautifully, and the customer service is outstanding. Highly recommended!”</p>
-                    <h4>Chioma Okafor</h4>
-                    <span>Lagos, Nigeria</span>
-                </article>
-                <article class="testimonial-card">
-                    <div class="stars" aria-label="5 out of 5 stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p>“We switched our restaurant to SULYMAS rice. Our customers love it—the consistency and quality are excellent.”</p>
-                    <h4>Chef Emeka Nwosu</h4>
-                    <span>Abuja, Nigeria</span>
-                </article>
-                <article class="testimonial-card">
-                    <div class="stars" aria-label="5 out of 5 stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p>“The delivery was fast, the packaging was perfect, and the rice is genuinely great quality. Worth every naira!”</p>
-                    <h4>Amara Adeleke</h4>
-                    <span>Port Harcourt, Nigeria</span>
-                </article>
-            </div>
-        </section>
+      <div class="about-grid">
+        <div class="about-image reveal">
+          <div class="image-wrapper">
+            <img src="sulymas.jpg" alt="SULYMAS rice farm">
+          </div>
+          <span class="image-badge">Est. 2018</span>
+        </div>
 
-        <!-- Products -->
-        <section class="products" id="products">
-            <h2 class="title">Our Products</h2>
-            <div class="product-container">
-                <article class="card">
-                    <img src="rice 5kg.PNG" alt="5 kilogram SULYMAS rice bag" loading="lazy">
-                    <h3>5KG Rice Bag</h3>
-                    <p>Premium quality family pack.</p>
-                    <a class="order-btn" href="https://wa.me/2349044993097?text=Hello%20SULYMAS%20FARM%20RICE%2C%20I%20want%20to%20buy%205KG%20Rice%20Bag" target="_blank" rel="noopener noreferrer">Order on WhatsApp</a>
-                </article>
-                <article class="card">
-                    <img src="rice 10kg.jpeg" alt="10 kilogram SULYMAS rice bag" loading="lazy">
-                    <h3>10KG Rice Bag</h3>
-                    <p>Freshly processed rice for your home.</p>
-                    <a class="order-btn" href="https://wa.me/2349044993097?text=Hello%20SULYMAS%20FARM%20RICE%2C%20I%20want%20to%20buy%2010KG%20Rice%20Bag" target="_blank" rel="noopener noreferrer">Order on WhatsApp</a>
-                </article>
-                <article class="card">
-                    <img src="rice 25kg.PNG" alt="25 kilogram SULYMAS rice bag" loading="lazy">
-                    <h3>25KG Rice Bag</h3>
-                    <p>A convenient option for restaurants and families.</p>
-                    <a class="order-btn" href="https://wa.me/2349044993097?text=Hello%20SULYMAS%20FARM%20RICE%2C%20I%20want%20to%20buy%2025KG%20Rice%20Bag" target="_blank" rel="noopener noreferrer">Order on WhatsApp</a>
-                </article>
-                <article class="card">
-                    <img src="rice 50kg.PNG" alt="50 kilogram SULYMAS rice bag" loading="lazy">
-                    <h3>50KG Rice Bag</h3>
-                    <p>Wholesale package for larger orders.</p>
-                    <a class="order-btn" href="https://wa.me/2349044993097?text=Hello%20SULYMAS%20FARM%20RICE%2C%20I%20want%20to%20buy%2050KG%20Rice%20Bag" target="_blank" rel="noopener noreferrer">Order on WhatsApp</a>
-                </article>
-            </div>
-        </section>
+        <div class="about-copy reveal">
+          <h3>Quality you can taste in every serving.</h3>
+          <p>
+            SULYMAS FARM RICE is committed to delivering quality Nigerian rice
+            through careful cultivation and processing.
+          </p>
+          <p>
+            Each grain is carefully cultivated, harvested and processed to
+            support great taste and consistency for homes, restaurants and
+            businesses across Nigeria.
+          </p>
 
-        <!-- Processing -->
-        <section class="processing" id="processing">
-            <h2 class="title">Our Processing Methods</h2>
-            <div class="processing-container">
-                <article class="process-card">
-                    <div class="process-icon"><i class="fas fa-filter" aria-hidden="true"></i></div>
-                    <h3>Sort and Select</h3>
-                    <p>Rice is sorted to help remove discolored grains and maintain a consistent product.</p>
-                    <span class="process-step">Step 1</span>
-                </article>
-                <article class="process-card">
-                    <div class="process-icon"><i class="fas fa-gem" aria-hidden="true"></i></div>
-                    <h3>Remove Stones</h3>
-                    <p>Careful stone removal helps prepare the rice for safe and enjoyable meals.</p>
-                    <span class="process-step">Step 2</span>
-                </article>
-                <article class="process-card">
-                    <div class="process-icon"><i class="fas fa-droplet" aria-hidden="true"></i></div>
-                    <h3>Polish</h3>
-                    <p>Rice is polished to give the grains a smooth finish and attractive appearance.</p>
-                    <span class="process-step">Step 3</span>
-                </article>
-                <article class="process-card">
-                    <div class="process-icon"><i class="fas fa-object-group" aria-hidden="true"></i></div>
-                    <h3>Grade</h3>
-                    <p>Grains are graded to help maintain consistency in size and quality.</p>
-                    <span class="process-step">Step 4</span>
-                </article>
-                <article class="process-card">
-                    <div class="process-icon"><i class="fas fa-gears" aria-hidden="true"></i></div>
-                    <h3>Mill</h3>
-                    <p>Careful milling prepares the rice while preserving its quality and flavor.</p>
-                    <span class="process-step">Step 5</span>
-                </article>
-                <article class="process-card">
-                    <div class="process-icon"><i class="fas fa-check-double" aria-hidden="true"></i></div>
-                    <h3>Quality Check</h3>
-                    <p>Each batch is inspected for appearance, cleanliness and consistency.</p>
-                    <span class="process-step">Step 6</span>
-                </article>
+          <div class="features-grid">
+            <div class="feature-item">
+              <i class="fas fa-leaf" aria-hidden="true"></i>
+              <h4>100% Natural</h4>
+              <p>No additives or chemicals</p>
             </div>
-            <div class="process-info">
-                <i class="fas fa-lightbulb" aria-hidden="true"></i>
-                <p>Careful processing helps bring quality rice from our farm to your table.</p>
+            <div class="feature-item">
+              <i class="fas fa-water" aria-hidden="true"></i>
+              <h4>Carefully Sorted</h4>
+              <p>Stone-free quality checks</p>
             </div>
-        </section>
+            <div class="feature-item">
+              <i class="fas fa-flask" aria-hidden="true"></i>
+              <h4>Quality Checked</h4>
+              <p>Careful batch inspection</p>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <h4>Made with Care</h4>
+              <p>Quality in every pack</p>
+            </div>
+          </div>
 
-        <!-- Why choose us -->
-        <section class="why">
-            <h2 class="title">Why Choose Us</h2>
-            <div class="why-container">
-                <article class="box"><i class="fas fa-award" aria-hidden="true"></i><h3>Quality Rice</h3></article>
-                <article class="box"><i class="fas fa-leaf" aria-hidden="true"></i><h3>Farm Fresh</h3></article>
-                <article class="box"><i class="fas fa-truck" aria-hidden="true"></i><h3>Delivery Options</h3></article>
-                <article class="box"><i class="fas fa-heart" aria-hidden="true"></i><h3>Customer Care</h3></article>
-            </div>
-        </section>
+          <h4 class="benefits-title">Why choose SULYMAS?</h4>
+          <ul class="benefits-list">
+            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Premium quality rice</li>
+            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Carefully sorted and hygienically processed</li>
+            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Great for a variety of meals</li>
+            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Convenient pack sizes for homes and businesses</li>
+            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Delivery available—contact us for details</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-        <!-- Gallery -->
-        <section class="gallery" id="gallery">
-            <h2 class="title">A Look at SULYMAS</h2>
-            <div class="gallery-container">
-                <img src="suu.PNG" alt="SULYMAS farm and rice" loading="lazy">
-                <img src="rice 10kg.jpeg" alt="SULYMAS
+    <section class="dark-section" id="quality">
+      <h2 class="section-title light">Our Quality Promise</h2>
+      <div class="cert-grid">
+        <article class="cert-card reveal">
+          <i class="fas fa-medal" aria-hidden="true"></i>
+          <h3>Carefully Selected</h3>
+          <p>Rice chosen with attention to quality.</p>
+        </article>
+        <article class="cert-card reveal">
+          <i class="fas fa-certificate" aria-hidden="true"></i>
+          <h3>Food Safety</h3>
+          <p>Handled with care throughout processing.</p>
+        </article>
+        <article class="cert-card reveal">
+          <i class="fas fa-shield-halved" aria-hidden="true"></i>
+          <h3>Quality Checked</h3>
+          <p>Every pack prepared with care.</p>
+        </article>
+        <article class="cert-card reveal">
+          <i class="fas fa-leaf" aria-hidden="true"></i>
+          <h3>Farm Fresh</h3>
+          <p>Rooted in care for our produce.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+      <h2 class="section-title">Loved by Our Customers</h2>
+      <div class="testimonial-grid">
+        <article class="testimonial-card reveal">
+          <span class="quote-mark" aria-hidden="true">“</span>
+          <div class="stars" aria-label="5 out of 5 stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <blockquote>“SULYMAS rice cooks beautifully, and the customer service is outstanding. Highly recommended!”</blockquote>
+          <h3>Chioma Okafor</h3>
+          <span>Lagos, Nigeria</span>
+        </article>
+        <article class="testimonial-card reveal">
+          <span class="quote-mark" aria-hidden="true">“</span>
+          <div class="stars" aria-label="5 out of 5 stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <blockquote>“Our customers love it! The consistency and quality make it a great choice for our restaurant.”</blockquote>
+          <h3>Chef Emeka Nwosu</h3>
+          <span>Abuja, Nigeria</span>
+        </article>
+        <article class="testimonial-card reveal">
+          <span class="quote-mark" aria-hidden="true">“</span>
+          <div class="stars" aria-label="5 out of 5 stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <blockquote>“The packaging was lovely, and the rice is genuinely great quality. Worth every naira!”</blockquote>
+          <h3>Amara Adeleke</h3>
+          <span>Port Harcourt, Nigeria</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="products" id="products">
+      <h2 class="section-title">Choose Your Perfect Pack</h2>
+      <div class="product-grid">
+        <article class="product-card reveal">
+          <div class="product-image"><img src="rice 5kg.PNG" alt="5 kilogram SULYMAS rice bag" loading="lazy"></div>
+          <div class="product-details">
+            <h3>5KG Rice Bag</h3>
+            <p>Premium quality family pack.</p>
+            <a class="order-btn" href="https://wa.me/2349044993097?text=Hello%20SULYMAS%20FARM%20RICE%2C%20I%20want%20to%20buy%205KG%20Rice%20Bag" target="_blank" rel="noopener noreferrer">Order on WhatsApp <i class="fab fa-whatsapp"></i></a>
+          </div>
+        </article>
+
+        <article class="product-card reveal">
+          <div class="product-image"><img src="rice 10kg.jpeg" alt="10 kilogram SULYMAS rice bag" loading="lazy"></div>
+          <div class="product-details">
+            <h3>10KG Rice Bag</h3>
+            <p>Freshly processed rice.</p>
+            <a class="order-btn" href="https://wa.me/2349044993097?text=Hello%20SULYMAS%20FARM%20RICE%2C%20I%20want%20to%20buy%2010KG%20Rice%20Bag" target="_blank" rel="noopener noreferrer">Order on WhatsApp <i class="fab fa-whatsapp"></i></a>
+          </div>
+        </article>
+
+        <article class="product-card reveal">
+          <div class="product-image"><img src="rice 25kg.PNG" alt="25 kilogram SULYMAS rice bag" loading="lazy"></div>
+          <div class="product-details">
+            <h3>25KG Rice Bag</h3>
+            <p>A generous pack for your kitchen.</p>
+            <a class="order-btn" href="https://wa.me/2349044993097?text=Hello%20SULYMAS%20FARM%20RICE%2C%20I%20want%20to%20buy%2025KG%20Rice%20Bag" target="_blank" rel="noopener noreferrer">Order on WhatsApp <i class="fab fa-whatsapp"></i></a>
+          </div>
+        </article>
+
+        <article class="product-card reveal">
+          <div class="product-image"><img src="rice 50kg.PNG" alt="50 kilogram SULYMAS rice bag" loading="lazy"></div>
+          <div class="product-details">
+            <h3>50KG Rice Bag</h3>
+            <p>Great for larger households and businesses.</p>
+            <a class="order-btn" href="https://wa.me/2349044993097?text=Hello%20SULYMAS%20FARM%20RICE%2C%20I%20want%20to%20buy%2050KG%20Rice%20Bag" target="_blank" rel="noopener noreferrer">Order on WhatsApp <i class="fab fa-whatsapp"></i></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="processing" id="processing">
+      <h2 class="section-title">Care in Every Step</h2>
+      <div class="process-grid">
+        <article class="process-card reveal">
+          <div class="process-icon"><i class="fas fa-magnifying-glass" aria-hidden="true"></i></div>
+          <h3>Sorting</h3>
+          <p>Grains are carefully sorted to remove discolored seeds and unwanted material.</p>
+          <span class="process-step">Step 1</span>
+        </article>
+        <article class="process-card reveal">
+          <div class="process-icon"><i class="fas fa-gem" aria-hidden="true"></i></div>
+          <h3>Stone Removal</h3>
+          <p>Rice is checked and processed to help remove stones and other unwanted particles.</p>
+          <span class="process-step">Step 2</span>
+        </article>
+        <article class="process-card reveal">
+          <div class="process-icon"><i class="fas fa-droplet" aria-hidden="true"></i></div>
+          <h3>Polishing</h3>
+          <p>Careful polishing gives the grains a smooth, appealing finish.</p>
+          <span class="process-step">Step 3</span>
+        </article>
+        <article class="process-card reveal">
+          <div class="process-icon"><i class="fas fa-object-group" aria-hidden="true"></i></div>
+          <h3>Grading</h3>
+          <p>Grains are graded to support consistent size and cooking quality.</p>
+          <span class="process-step">Step 4</span>
+        </article>
+        <article class="process-card reveal">
+          <div class="process-icon"><i class="fas fa-gears" aria-hidden="true"></i></div>
+          <h3>Milling</h3>
+          <p>Rice is milled with care to prepare it for packaging and your kitchen.</p>
+          <span class="process-step">Step 5</span>
+        </article>
+        <article class="process-card reveal">
+          <div class="process-icon"><i class="fas fa-check-double" aria-hidden="true"></i></div>
+          <h3>Quality Check</h3>
+          <p>Final checks help ensure each pack is ready to make a delicious meal.</p>
+          <span class="process-step">Step 6</span>
+        </article>
+      </div>
+      <div class="process-info reveal">
+        <i class="fas fa-lightbulb" aria-hidden="true"></i>
+        <p>Careful processing helps bring quality rice from our farm to your table.</p>
+      </div>
+    </section>
+
+    <section class="dark-section" id="why-us">
+      <h2 class="section-title light">Why Choose SULYMAS?</h2>
+      <div class="why-grid">
+        <article class="why-card reveal"><i class="fas fa-award" aria-hidden="true"></i><h3>Quality Rice</h3></article>
+        <article class="why-card reveal"><i class="fas fa-leaf" aria-hidden="true"></i><h3>Made with Care</h3></article>
+        <article class="why-card reveal"><i class="fas fa-truck" aria-hidden="true"></i><h3>Delivery Options</h3></article>
+        <article class="why-card reveal"><i class="fas fa-heart" aria-hidden="true"></i><h3>Customer Focused</h3></article>
+      </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+      <h2 class="section-title">A Glimpse of SULYMAS</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item reveal"><img src="suu.PNG" alt="SULYMAS farm and rice" loading="lazy"></div>
+        <div class="gallery-item reveal"><img src="rice 10kg.jpeg" alt="SULYMAS 10 kilogram rice pack" loading="lazy"></div>
+        <div class="gallery-item reveal"><img src="rice 50kg.PNG" alt="SULYMAS 50 kilogram rice pack" loading="lazy"></div>
+        <div class="gallery-item reveal"><img src="rice 5kg.PNG" alt="SULYMAS 5 kilogram rice pack" loading="lazy"></div>
+        <div class="gallery-item reveal"><img src="rice 25kg.PNG" alt="SULYMAS 25 kilogram rice pack" loading="lazy"></div>
+        <div class="gallery-item reveal"><img src="suu.PNG" alt="SULYMAS rice farm" loading="lazy"></div>
+      </div>
+    </section>
+
+    <section class="hours" id="hours">
+      <div class="hours-content">
+        <h2 class="section-title light">We’re Here to Help</h2>
+        <div class="hours-grid">
+          <article class="hours-card reveal">
+            <h3><i class="fas fa-clock" aria-hidden="true"></i> Weekly Schedule</h3>
+            <div class="hour-row"><span>Monday – Friday</span><strong>8:00 AM – 6:00 PM</strong></div>
+            <div class="hour-row"><span>Saturday</span><strong>9:00 AM – 5:00 PM</strong></div>
+            <div class="hour-row"><span>Sunday</span><strong>10:00 AM – 4:00 PM</strong></div>
+          </article>
+
+          <article class="hours-card reveal">
+            <h3><i class="fas fa-headset" aria-hidden="true"></i> Quick Support</h3>
+            <p style="margin-bottom:16px;color:rgba(255,255,255,.76)">For orders and inquiries, contact us:</p>
+            <div class="support-links">
+              <a class="support-link" href="tel:+2349044993097"><i class="fas fa-phone" aria-hidden="true"></i> +234 904 499 3097</a>
+              <a class="support-link" href="https://wa.me/2349044993097?text=Hello%20SULYMAS%20FARM%20RICE%2C%20I%20need%20help" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp Us</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="hours-info reveal">
+          <i class="fas fa-info-circle" aria-hidden="true"></i>
+          <p>Send an order inquiry through WhatsApp anytime. Contact us to confirm delivery availability and details.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <h2 class="section-title">Let’s Talk Rice</h2>
+
+      <div class="contact-grid">
+        <form class="contact-form">
+          <input type="text" name="name" placeholder="Full Name" aria-label="Full name" required>
+          <input type="email" name="email" placeholder="Email Address" aria-label="Email address" required>
+          <input type="tel" name="phone" placeholder="Phone Number" aria-label="Phone number">
+          <textarea name="message" placeholder="Your Message" aria-label="Your message" rows="4" required></textarea>
+          <button type="submit">Send Message <i class="fas fa-arrow-right" aria-hidden="true"></i></button>
+        </form>
+
+        <div class="contact-side">
+          <div class="contact-info reveal">
+            <h3>Get in Touch</h3>
+            <p><i class="fas fa-phone" aria-hidden="true"></i><a href="tel:+2349044993097">+234 904 499 3097</a></p>
+            <p><i class="fas fa-envelope" aria-hidden="true"></i><a href="mailto:sulymasfarmrice@gmail.com">sulymasfarmrice@gmail.com</a></p>
+            <p><i class="fas fa-location-dot" aria-hidden="true"></i><span>Nigeria</span></p>
+            <p><i class="fab fa-whatsapp" aria-hidden="true"></i><a href="https://wa.me/2349044993097?text=Hello%20SULYMAS%20FARM%20RICE%2C%20I%20want%20to%20order%20rice" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a></p>
+          </div>
+
+          <div class="location-card reveal">
+            <h3>Find Us</h3>
+            <div class="map-frame">
+              <iframe
+                src="https://www.openstreetmap.org/export/embed.html?bbox=7.340%2C9.010%2C7.440%2C9.080&layer=mapnik"
+                title="Map showing SULYMAS FARM RICE location"
+                loading="lazy"
+                allowfullscreen>
+              </iframe>
+            </div>
+            <p>Contact us to confirm our location and delivery details.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <h2>SULYMAS FARM RICE</h2>
+    <p>Premium quality rice, from farm to your table.</p>
+
+    <div class="social" aria-label="Social media links">
+      <a href="https://www.facebook.com/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/2349044993097" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://x.com/" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+    </div>
+
+    <p class="copyright">© <span id="year"></span> SULYMAS FARM RICE. All rights reserved.</p>
+  </footer>
+
+  <a
+    class="whatsapp-btn"
+    href="https://wa.me/2349044993097?text=Hello%20SULYMAS%20FARM%20RICE%2C%20I%20want%20to%20order%20rice"
+    target="_blank"
+    rel="noopener noreferrer">
+    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+    <span>Chat with us</span>
+  </a>
+
+  <button class="back-to-top" type="button" aria-label="Back to top">
+    <i class="fas fa-arrow-up" aria-hidden="true"></i>
+  </button>
+
+  <script>
+    // Mobile navigation
+    const menuButton = document.querySelector(".menu-btn");
+    const navigation = document.querySelector(".site-nav");
+
+    function closeMenu() {
+      navigation.classList.remove("open");
+      menuButton.setAttribute("aria-expanded", "false");
+      menuButton.setAttribute("aria-label", "Open menu");
+      menuButton.innerHTML = '<i class="fas fa-bars" aria-hidden="true"></i>';
+    }
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = navigation.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+      menuButton.innerHTML = isOpen
+        ? '<i class="fas fa-times" aria-hidden="true"></i>'
+        : '<i class="fas fa-bars" aria-hidden="true"></i>';
+    });
+
+    document.querySelectorAll(".site-nav a").forEach(link => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 760) closeMenu();
+    });
+
+    // Header, page progress, and back-to-top button
+    const header = document.querySelector(".site-header");
+    const progressBar = document.querySelector(".scroll-progress");
+    const backToTop = document.querySelector(".back-to-top");
+
+    function updateOnScroll() {
+      const scrollableHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollableHeight > 0 ? window.scrollY / scrollableHeight : 0;
+
+      progressBar.style.transform = `scaleX(${progress})`;
+      header.classList.toggle("scrolled", window.scrollY > 40);
+      backToTop.classList.toggle("visible", window.scrollY > 500);
+    }
+
+    window.addEventListener("scroll", updateOnScroll, { passive: true });
+    window.addEventListener("resize", updateOnScroll);
+    updateOnScroll();
+
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // Highlight the current section in the navigation
+    const sections = document.querySelectorAll("main section[id]");
+    const navLinks = document.querySelectorAll(".site-nav a");
+
+    if ("IntersectionObserver" in window) {
+      const sectionObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          navLinks.forEach(link => {
+            const isCurrent = link.getAttribute("href") === `#${entry.target.id}`;
+            link.classList.toggle("active", isCurrent);
+          });
+        });
+      }, { rootMargin: "-35% 0px -55% 0px" });
+
+      sections.forEach(section => sectionObserver.observe(section));
+    }
+
+    // Reveal elements as they enter the viewport
+    const revealElements = document.querySelectorAll(
+      ".section-title, .about-image, .about-copy, .feature-item, " +
+      ".cert-card, .testimonial-card, .product-card, .process-card, " +
+      ".process-info, .why-card, .gallery-item, .hours-card, .hours-info, " +
+      ".contact-form, .contact-info, .location-card"
+    );
+
+    revealElements.forEach((element, index) => {
+      element.classList.add("reveal");
+      element.style.setProperty("--delay", `${(index % 4) * 80}ms`);
+    });
+
+    if ("IntersectionObserver" in window) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -30px 0px" });
+
+      revealElements.forEach(element => revealObserver.observe(element));
+    } else {
+      revealElements.forEach(element => element.classList.add("is-visible"));
+    }
+
+    // Rotate the featured product slides
+    const phoneSlides = document.querySelectorAll(".phone-slide");
+    let currentSlide = 0;
+
+    if (phoneSlides.length > 1) {
+      window.setInterval(() => {
+        phoneSlides[currentSlide].classList.remove("active");
+        currentSlide = (currentSlide + 1) % phoneSlides.length;
+        phoneSlides[currentSlide].classList.add("active");
+      }, 4500);
+    }
+
+    // This demo form displays a confirmation but does not send email.
+    const contactForm = document.querySelector(".contact-form");
+
+    contactForm.addEventListener("submit", event => {
+      event.preventDefault();
+      alert("Thank you for contacting SULYMAS FARM RICE. We will get back to you shortly.");
+      contactForm.reset();
+    });
+
+    // Keep the copyright year current
+    document.querySelector("#year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+```**Note:** The contact form currently shows a confirmation message but doesn’t send email. To receive messages, connect it to a form service or a backend. Also replace the social media links with your actual business profiles.
